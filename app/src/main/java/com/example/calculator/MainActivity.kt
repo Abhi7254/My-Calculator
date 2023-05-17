@@ -154,5 +154,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Remove the zero after decimal point
+     */
+    private fun removeZeroAfterDot(result: String): String {
 
+        var value = result
+
+        if (result.contains(".0")) {
+            value = result.substring(0, result.length - 2)
+        }
+
+        return value
+    }
+
+    /**
+     * It is used to check whether any of the operator is used or not.
+     */
+    private fun isOperatorAdded(value: String): Boolean {
+
+        /**
+         * Here first we will check that if the value starts with "-" then will ignore it.
+         * As it is the result value and perform further calculation.
+         */
+
+        return if (value.startsWith("-")) {
+            false
+        } else {
+            (value.contains("/")
+                    || value.contains("*")
+                    || value.contains("-")
+                    || value.contains("+"))
+        }
+    }
 }
